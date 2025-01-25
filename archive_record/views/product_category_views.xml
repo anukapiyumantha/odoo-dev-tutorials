@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="product_category_form_view_inherit_archive_record" model="ir.ui.view">
+        <field name="name">product.category.form.inherit.archive.record</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="active" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_category_search_view_inherit_archive_record" model="ir.ui.view">
+        <field name="name">product.category.search.inherit.archive.record</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
